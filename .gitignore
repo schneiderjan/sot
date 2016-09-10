@@ -47,3 +47,5 @@ Temporary Items
 .apdisk
 src/
 build/
+/wk2/TomcatClientJar/nbproject/private/
+/wk2/TomcatClientJar/dist/

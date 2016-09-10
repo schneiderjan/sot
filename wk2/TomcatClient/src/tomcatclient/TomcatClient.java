@@ -36,7 +36,7 @@ public class TomcatClient extends Application {
         CompositeServService servService = new CompositeServService();
         CompositeServ service = servService.getCompositeServPort();
         service.setStundentName("Jan");
-        service.setMaxStudents(5);
+        service.setMaxStudents(15);
 
         bp = new BorderPane();
         left = new VBox();
