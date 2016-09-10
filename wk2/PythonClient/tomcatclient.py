@@ -7,8 +7,7 @@ client = osa.Client("http://localhost:8080/TomcatService/comp?wsdl")
 client.service.setStundentName("Python")
 name = client.service.getStundentName()
 
-#Add python 2 times
-client.service.AddStudent(client.service.getStudent())
+#Add python student
 client.service.AddStudent(client.service.getStudent())
 
 #Get all students back and print their names

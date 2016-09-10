@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TomcatClientJar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/TomcatClientJar.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
