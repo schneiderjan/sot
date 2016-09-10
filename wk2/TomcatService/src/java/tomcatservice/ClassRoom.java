@@ -19,14 +19,11 @@ import javax.jws.WebService;
 public interface ClassRoom {
  
     @WebMethod
-    public boolean AddStudent(FontysStudent newStudent);
+    public boolean AddStudent(Student newStudent);
     
     @WebMethod
-    public boolean RemoveStudent(FontysStudent student);
+    public boolean RemoveStudent(Student student);
     
     @WebMethod 
     public String StartClass();
-    
-    @WebMethod
-    public List<FontysStudent> GetStudentsInClass();
 }

@@ -16,18 +16,42 @@ import javax.jws.WebService;
  */
 @WebService(endpointInterface="tomcatservice.ClassRoom")
 public class SmallClassRoom implements ClassRoom {
-    List<FontysStudent> students;
-    private int maxStudents = 25;
-    private String className;
+    List<Student> students;
+    int maxStudents = 25;
+    String className;
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public int getMaxStudents() {
+        return maxStudents;
+    }
+
+    public void setMaxStudents(int maxStudents) {
+        this.maxStudents = maxStudents;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
     
-//    public SmallClassRoom(String className){
-//        maxStudents = 25;
-//        this.className = className;
-//    }
+    public SmallClassRoom(String className){
+        maxStudents = 25;
+        this.className = className;
+    }
     public SmallClassRoom(){}
 
     @Override
-    public boolean AddStudent(FontysStudent newStudent) {
+    public boolean AddStudent(Student newStudent) {
         if (students.size() < maxStudents){
             return students.add(newStudent);
         }
@@ -35,20 +59,12 @@ public class SmallClassRoom implements ClassRoom {
     }
 
     @Override
-    public boolean RemoveStudent(FontysStudent student) {
+    public boolean RemoveStudent(Student student) {
         return students.remove(student);
     }
 
     @Override
     public String StartClass() {
         return "Class started. Hooray"; 
-    }
-
-    @Override
-    public List<FontysStudent> GetStudentsInClass() {
-        return students;
-    }
-    
-    
-    
+    }    
 }
