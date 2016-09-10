@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://tomcatservice/}fontysStudent" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://tomcatservice/}student" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class AddStudent {
 
-    protected FontysStudent arg0;
+    protected Student arg0;
 
     /**
      * Gets the value of the arg0 property.
      * 
      * @return
      *     possible object is
-     *     {@link FontysStudent }
+     *     {@link Student }
      *     
      */
-    public FontysStudent getArg0() {
+    public Student getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class AddStudent {
      * 
      * @param value
      *     allowed object is
-     *     {@link FontysStudent }
+     *     {@link Student }
      *     
      */
-    public void setArg0(FontysStudent value) {
+    public void setArg0(Student value) {
         this.arg0 = value;
     }
 

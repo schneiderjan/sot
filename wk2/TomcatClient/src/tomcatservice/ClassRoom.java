@@ -1,7 +1,6 @@
 
 package tomcatservice;
 
-import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -27,30 +26,6 @@ public interface ClassRoom {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<tomcatservice.FontysStudent>
-     */
-    @WebMethod(operationName = "GetStudentsInClass")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "GetStudentsInClass", targetNamespace = "http://tomcatservice/", className = "tomcatservice.GetStudentsInClass")
-    @ResponseWrapper(localName = "GetStudentsInClassResponse", targetNamespace = "http://tomcatservice/", className = "tomcatservice.GetStudentsInClassResponse")
-    @Action(input = "http://tomcatservice/ClassRoom/GetStudentsInClassRequest", output = "http://tomcatservice/ClassRoom/GetStudentsInClassResponse")
-    public List<FontysStudent> getStudentsInClass();
-
-    /**
-     * 
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod(operationName = "StartClass")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "StartClass", targetNamespace = "http://tomcatservice/", className = "tomcatservice.StartClass")
-    @ResponseWrapper(localName = "StartClassResponse", targetNamespace = "http://tomcatservice/", className = "tomcatservice.StartClassResponse")
-    @Action(input = "http://tomcatservice/ClassRoom/StartClassRequest", output = "http://tomcatservice/ClassRoom/StartClassResponse")
-    public String startClass();
-
-    /**
-     * 
      * @param arg0
      * @return
      *     returns boolean
@@ -62,7 +37,7 @@ public interface ClassRoom {
     @Action(input = "http://tomcatservice/ClassRoom/RemoveStudentRequest", output = "http://tomcatservice/ClassRoom/RemoveStudentResponse")
     public boolean removeStudent(
         @WebParam(name = "arg0", targetNamespace = "")
-        FontysStudent arg0);
+        Student arg0);
 
     /**
      * 
@@ -77,6 +52,18 @@ public interface ClassRoom {
     @Action(input = "http://tomcatservice/ClassRoom/AddStudentRequest", output = "http://tomcatservice/ClassRoom/AddStudentResponse")
     public boolean addStudent(
         @WebParam(name = "arg0", targetNamespace = "")
-        FontysStudent arg0);
+        Student arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod(operationName = "StartClass")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "StartClass", targetNamespace = "http://tomcatservice/", className = "tomcatservice.StartClass")
+    @ResponseWrapper(localName = "StartClassResponse", targetNamespace = "http://tomcatservice/", className = "tomcatservice.StartClassResponse")
+    @Action(input = "http://tomcatservice/ClassRoom/StartClassRequest", output = "http://tomcatservice/ClassRoom/StartClassResponse")
+    public String startClass();
 
 }

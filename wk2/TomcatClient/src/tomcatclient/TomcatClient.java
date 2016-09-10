@@ -5,53 +5,97 @@
  */
 package tomcatclient;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import tomcatservice.FontysStudent;
+import tomcatservice.*;
 
 /**
  *
  * @author jan
  */
 public class TomcatClient extends Application {
+    Button btnFail,btnAddStudent,btnSetStudentName, btnGetAllStudents,btnPass
+            ,btnStartClass;
+    ListView<String> listView;
+    BorderPane bp;
+    TextField txtField;
+    VBox left = new VBox();
+    VBox center = new VBox();
+    VBox right = new VBox();
+
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+    public void start(Stage primaryStage) throws Exception {
+        CompositeServService servService = new CompositeServService();
+        CompositeServ service = servService.getCompositeServPort();
+        service.setStundentName("Jan");
+        service.setMaxStudents(5);
 
-        Scene scene = new Scene(root);
+        bp = new BorderPane();
+        left = new VBox();
+        center = new VBox();
+        right = new VBox();
+        listView = new ListView<>();
+        txtField = new TextField("Enter student or class name.");
+        btnFail= new Button("Fail Student");
+        btnPass= new Button("Pass Student");
+        btnAddStudent= new Button("Go to class");
+        btnSetStudentName= new Button("Set StudentName");
+        btnGetAllStudents = new Button("All students");
+        btnStartClass = new Button("Start class");
 
-        stage.setScene(scene);
-        stage.show();
+        center.getChildren().add(txtField);
+        center.getChildren().add(listView);
+        left.getChildren().add(btnPass);
+        left.getChildren().add(btnFail);
+        left.getChildren().add(btnSetStudentName);
+        right.getChildren().add(btnGetAllStudents);
+        right.getChildren().add(btnStartClass);
+        right.getChildren().add(btnAddStudent);
+
+        bp.setLeft(left);
+        bp.setRight(right);
+        bp.setCenter(center);
+        Scene scene = new Scene(bp,500,250);
+        primaryStage.setScene(scene);
+
+        btnFail.setOnAction( (ActionEvent e) -> {
+            listView.getItems().add( service.fail());
+            }
+        );
+        btnPass.setOnAction( (ActionEvent e) -> {
+                    listView.getItems().add(service.pass());
+                }
+        );
+        btnAddStudent.setOnAction( (ActionEvent e) -> {
+           if( service.addStudent(service.getStudent())){
+               listView.getItems().add("You went to class.");
+           }else listView.getItems().add("Class full. Better stay home.");
+            }
+        );
+        btnSetStudentName.setOnAction( (ActionEvent e) -> {
+            service.setStundentName(txtField.getText());
+            }
+        );
+        btnGetAllStudents.setOnAction( (ActionEvent e) -> {
+            for (Student stud : service.getStudents()){
+                listView.getItems().add(stud.getStundentName());
+            }}
+        );
+        btnStartClass.setOnAction( (ActionEvent e) -> {
+               listView.getItems().add( service.startClass());
+        }
+        );
+
+        primaryStage.show();
 
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws MalformedURLException {
-        launch(args);
-
-        URL urlStudent = new URL("http://localhost:8080/TomcatService/student?wsdl");
-        URL urlClass = new URL("http://localhost:8080/TomcatService/class?wsdl");
-
-        QName qnameStudent = new QName("http://localhost:8080/TomcatService/student", "FontysStudentService");
-        QName qnameClass = new QName("http://localhost:8080/TomcatService/class", "SmallClassRoomService");
-
-        Service studentService = Service.create(urlStudent, qnameStudent);
-        Service classService = Service.create(urlClass, qnameClass);
-
-        FontysStudent student = studentService.getPort(FontysStudent.class);
-        student.setName("jan");
-        
-               System.out.println(student.getName());
-    }
-
+    
 }

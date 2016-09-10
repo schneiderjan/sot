@@ -4,11 +4,11 @@
     <service name="SmallClassRoom">
       <implementation-class>tomcatservice.SmallClassRoom</implementation-class>
     </service>
-    <service name="Comp">
-      <implementation-class>tomcatservice.Comp</implementation-class>
-    </service>
     <service name="Student">
       <implementation-class>tomcatservice.Student</implementation-class>
+    </service>
+    <service name="CompositeServ">
+      <implementation-class>tomcatservice.CompositeServ</implementation-class>
     </service>
   </services>
   <clients/>

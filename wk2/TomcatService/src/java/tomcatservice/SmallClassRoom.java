@@ -7,6 +7,7 @@ package tomcatservice;
  */
 
 
+import java.util.LinkedList;
 import java.util.List;
 import javax.jws.WebService;
 
@@ -43,12 +44,11 @@ public class SmallClassRoom implements ClassRoom {
     public void setClassName(String className) {
         this.className = className;
     }
-    
-    public SmallClassRoom(String className){
-        maxStudents = 25;
-        this.className = className;
+
+    public SmallClassRoom(){
+        students = new LinkedList<>();
+        className = "SOT";
     }
-    public SmallClassRoom(){}
 
     @Override
     public boolean AddStudent(Student newStudent) {
