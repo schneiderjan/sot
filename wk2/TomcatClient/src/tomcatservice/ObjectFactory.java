@@ -28,8 +28,8 @@ public class ObjectFactory {
     private final static QName _SetStundentNameResponse_QNAME = new QName("http://tomcatservice/", "setStundentNameResponse");
     private final static QName _GetStudent_QNAME = new QName("http://tomcatservice/", "getStudent");
     private final static QName _GetStundentName_QNAME = new QName("http://tomcatservice/", "getStundentName");
-    private final static QName _SetStundentName_QNAME = new QName("http://tomcatservice/", "setStundentName");
     private final static QName _StartClassResponse_QNAME = new QName("http://tomcatservice/", "StartClassResponse");
+    private final static QName _SetStundentName_QNAME = new QName("http://tomcatservice/", "setStundentName");
     private final static QName _SetClassNameResponse_QNAME = new QName("http://tomcatservice/", "setClassNameResponse");
     private final static QName _SetStudent_QNAME = new QName("http://tomcatservice/", "setStudent");
     private final static QName _Fail_QNAME = new QName("http://tomcatservice/", "Fail");
@@ -44,8 +44,8 @@ public class ObjectFactory {
     private final static QName _RemoveStudent_QNAME = new QName("http://tomcatservice/", "RemoveStudent");
     private final static QName _GetMaxStudents_QNAME = new QName("http://tomcatservice/", "getMaxStudents");
     private final static QName _GetStudents_QNAME = new QName("http://tomcatservice/", "getStudents");
-    private final static QName _SetMaxStudentsResponse_QNAME = new QName("http://tomcatservice/", "setMaxStudentsResponse");
     private final static QName _GetClassNameResponse_QNAME = new QName("http://tomcatservice/", "getClassNameResponse");
+    private final static QName _SetMaxStudentsResponse_QNAME = new QName("http://tomcatservice/", "setMaxStudentsResponse");
     private final static QName _GetStudentsResponse_QNAME = new QName("http://tomcatservice/", "getStudentsResponse");
     private final static QName _GetClassRoom_QNAME = new QName("http://tomcatservice/", "getClassRoom");
     private final static QName _GetClassName_QNAME = new QName("http://tomcatservice/", "getClassName");
@@ -54,8 +54,8 @@ public class ObjectFactory {
     private final static QName _AddStudentResponse_QNAME = new QName("http://tomcatservice/", "AddStudentResponse");
     private final static QName _GetStudentResponse_QNAME = new QName("http://tomcatservice/", "getStudentResponse");
     private final static QName _GetClassRoomResponse_QNAME = new QName("http://tomcatservice/", "getClassRoomResponse");
-    private final static QName _GetStundentNameResponse_QNAME = new QName("http://tomcatservice/", "getStundentNameResponse");
     private final static QName _SetStudentResponse_QNAME = new QName("http://tomcatservice/", "setStudentResponse");
+    private final static QName _GetStundentNameResponse_QNAME = new QName("http://tomcatservice/", "getStundentNameResponse");
     private final static QName _AddStudent_QNAME = new QName("http://tomcatservice/", "AddStudent");
     private final static QName _SetMaxStudents_QNAME = new QName("http://tomcatservice/", "setMaxStudents");
 
@@ -91,19 +91,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetStundentName }
-     * 
-     */
-    public SetStundentName createSetStundentName() {
-        return new SetStundentName();
-    }
-
-    /**
      * Create an instance of {@link StartClassResponse }
      * 
      */
     public StartClassResponse createStartClassResponse() {
         return new StartClassResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetStundentName }
+     * 
+     */
+    public SetStundentName createSetStundentName() {
+        return new SetStundentName();
     }
 
     /**
@@ -187,19 +187,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetMaxStudentsResponse }
-     * 
-     */
-    public SetMaxStudentsResponse createSetMaxStudentsResponse() {
-        return new SetMaxStudentsResponse();
-    }
-
-    /**
      * Create an instance of {@link GetClassNameResponse }
      * 
      */
     public GetClassNameResponse createGetClassNameResponse() {
         return new GetClassNameResponse();
+    }
+
+    /**
+     * Create an instance of {@link SetMaxStudentsResponse }
+     * 
+     */
+    public SetMaxStudentsResponse createSetMaxStudentsResponse() {
+        return new SetMaxStudentsResponse();
     }
 
     /**
@@ -259,19 +259,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetStundentNameResponse }
-     * 
-     */
-    public GetStundentNameResponse createGetStundentNameResponse() {
-        return new GetStundentNameResponse();
-    }
-
-    /**
      * Create an instance of {@link SetStudentResponse }
      * 
      */
     public SetStudentResponse createSetStudentResponse() {
         return new SetStudentResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetStundentNameResponse }
+     * 
+     */
+    public GetStundentNameResponse createGetStundentNameResponse() {
+        return new GetStundentNameResponse();
     }
 
     /**
@@ -391,21 +391,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SetStundentName }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tomcatservice/", name = "setStundentName")
-    public JAXBElement<SetStundentName> createSetStundentName(SetStundentName value) {
-        return new JAXBElement<SetStundentName>(_SetStundentName_QNAME, SetStundentName.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StartClassResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://tomcatservice/", name = "StartClassResponse")
     public JAXBElement<StartClassResponse> createStartClassResponse(StartClassResponse value) {
         return new JAXBElement<StartClassResponse>(_StartClassResponse_QNAME, StartClassResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SetStundentName }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tomcatservice/", name = "setStundentName")
+    public JAXBElement<SetStundentName> createSetStundentName(SetStundentName value) {
+        return new JAXBElement<SetStundentName>(_SetStundentName_QNAME, SetStundentName.class, null, value);
     }
 
     /**
@@ -535,21 +535,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SetMaxStudentsResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tomcatservice/", name = "setMaxStudentsResponse")
-    public JAXBElement<SetMaxStudentsResponse> createSetMaxStudentsResponse(SetMaxStudentsResponse value) {
-        return new JAXBElement<SetMaxStudentsResponse>(_SetMaxStudentsResponse_QNAME, SetMaxStudentsResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetClassNameResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://tomcatservice/", name = "getClassNameResponse")
     public JAXBElement<GetClassNameResponse> createGetClassNameResponse(GetClassNameResponse value) {
         return new JAXBElement<GetClassNameResponse>(_GetClassNameResponse_QNAME, GetClassNameResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SetMaxStudentsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tomcatservice/", name = "setMaxStudentsResponse")
+    public JAXBElement<SetMaxStudentsResponse> createSetMaxStudentsResponse(SetMaxStudentsResponse value) {
+        return new JAXBElement<SetMaxStudentsResponse>(_SetMaxStudentsResponse_QNAME, SetMaxStudentsResponse.class, null, value);
     }
 
     /**
@@ -625,21 +625,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetStundentNameResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tomcatservice/", name = "getStundentNameResponse")
-    public JAXBElement<GetStundentNameResponse> createGetStundentNameResponse(GetStundentNameResponse value) {
-        return new JAXBElement<GetStundentNameResponse>(_GetStundentNameResponse_QNAME, GetStundentNameResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SetStudentResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://tomcatservice/", name = "setStudentResponse")
     public JAXBElement<SetStudentResponse> createSetStudentResponse(SetStudentResponse value) {
         return new JAXBElement<SetStudentResponse>(_SetStudentResponse_QNAME, SetStudentResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetStundentNameResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tomcatservice/", name = "getStundentNameResponse")
+    public JAXBElement<GetStundentNameResponse> createGetStundentNameResponse(GetStundentNameResponse value) {
+        return new JAXBElement<GetStundentNameResponse>(_GetStundentNameResponse_QNAME, GetStundentNameResponse.class, null, value);
     }
 
     /**

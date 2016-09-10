@@ -18,7 +18,7 @@ namespace TomcatClientCSharp
             context = new InstanceContext(this);
             proxy = new tomcatServiceReference.CompositeServClient();
 
-            proxy.setStundentName("C#");
+            proxy.setStundentName("C#Client");
             proxy.setMaxStudents(15);
 
             InitializeComponent();

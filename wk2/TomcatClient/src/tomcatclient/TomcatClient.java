@@ -34,8 +34,8 @@ public class TomcatClient extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         CompositeServService servService = new CompositeServService();
-        CompositeServ service = servService.getCompositeServPort();
-        service.setStundentName("Jan");
+        ICompositeServ service = servService.getCompositeServPort();
+        service.setStundentName("WsImportClient");
         service.setMaxStudents(15);
 
         bp = new BorderPane();
