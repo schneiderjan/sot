@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ns0="http://tomcatservice/" targetNamespace="http://tomcatservice/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="getStundentName" />
+  <xsd:complexType name="setStudent">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" type="ns0:student" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="student">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="stundentName" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="setClassNameResponse" />
+  <xsd:complexType name="setStundentName">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="StartClassResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="setStundentNameResponse" />
+  <xsd:complexType name="setClassName">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getStudent" />
+  <xsd:complexType name="setClassRoomResponse" />
+  <xsd:complexType name="getMaxStudentsResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:int" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Pass" />
+  <xsd:complexType name="FailResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RemoveStudentResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="setClassRoom">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" type="ns0:smallClassRoom" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Fail" />
+  <xsd:complexType name="setMaxStudentsResponse" />
+  <xsd:complexType name="getClassNameResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getStudents" />
+  <xsd:complexType name="smallClassRoom">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="className" type="xsd:string" />
+      <xsd:element name="maxStudents" type="xsd:int" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="students" nillable="true" type="ns0:student" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getClassRoom" />
+  <xsd:complexType name="getStudentsResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="return" type="ns0:student" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RemoveStudent">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" type="ns0:student" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="StartClass" />
+  <xsd:complexType name="PassResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getMaxStudents" />
+  <xsd:complexType name="getStundentNameResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="setStudentResponse" />
+  <xsd:complexType name="getClassRoomResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" type="ns0:smallClassRoom" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getStudentResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="return" type="ns0:student" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="setMaxStudents">
+    <xsd:sequence>
+      <xsd:element name="arg0" type="xsd:int" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AddStudent">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="arg0" type="ns0:student" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getClassName" />
+  <xsd:complexType name="AddStudentResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="setStudents">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="arg0" type="ns0:student" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="setStudentsResponse" />
+  <xsd:element name="getStundentName" type="ns0:getStundentName" />
+  <xsd:element name="setStudent" type="ns0:setStudent" />
+  <xsd:element name="setClassNameResponse" type="ns0:setClassNameResponse" />
+  <xsd:element name="setStundentName" type="ns0:setStundentName" />
+  <xsd:element name="StartClassResponse" type="ns0:StartClassResponse" />
+  <xsd:element name="setStundentNameResponse" type="ns0:setStundentNameResponse" />
+  <xsd:element name="setClassName" type="ns0:setClassName" />
+  <xsd:element name="getStudent" type="ns0:getStudent" />
+  <xsd:element name="setClassRoomResponse" type="ns0:setClassRoomResponse" />
+  <xsd:element name="getMaxStudentsResponse" type="ns0:getMaxStudentsResponse" />
+  <xsd:element name="Pass" type="ns0:Pass" />
+  <xsd:element name="FailResponse" type="ns0:FailResponse" />
+  <xsd:element name="RemoveStudentResponse" type="ns0:RemoveStudentResponse" />
+  <xsd:element name="setClassRoom" type="ns0:setClassRoom" />
+  <xsd:element name="Fail" type="ns0:Fail" />
+  <xsd:element name="setMaxStudentsResponse" type="ns0:setMaxStudentsResponse" />
+  <xsd:element name="getClassNameResponse" type="ns0:getClassNameResponse" />
+  <xsd:element name="getStudents" type="ns0:getStudents" />
+  <xsd:element name="getClassRoom" type="ns0:getClassRoom" />
+  <xsd:element name="getStudentsResponse" type="ns0:getStudentsResponse" />
+  <xsd:element name="RemoveStudent" type="ns0:RemoveStudent" />
+  <xsd:element name="StartClass" type="ns0:StartClass" />
+  <xsd:element name="PassResponse" type="ns0:PassResponse" />
+  <xsd:element name="getMaxStudents" type="ns0:getMaxStudents" />
+  <xsd:element name="getStundentNameResponse" type="ns0:getStundentNameResponse" />
+  <xsd:element name="setStudentResponse" type="ns0:setStudentResponse" />
+  <xsd:element name="getClassRoomResponse" type="ns0:getClassRoomResponse" />
+  <xsd:element name="getStudentResponse" type="ns0:getStudentResponse" />
+  <xsd:element name="setMaxStudents" type="ns0:setMaxStudents" />
+  <xsd:element name="AddStudent" type="ns0:AddStudent" />
+  <xsd:element name="getClassName" type="ns0:getClassName" />
+  <xsd:element name="AddStudentResponse" type="ns0:AddStudentResponse" />
+  <xsd:element name="setStudents" type="ns0:setStudents" />
+  <xsd:element name="setStudentsResponse" type="ns0:setStudentsResponse" />
+</xsd:schema>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://tomcatservice/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="CompositeServService" targetNamespace="http://tomcatservice/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/TomcatService/comp?xsd=1" namespace="http://tomcatservice/" />
+    </xsd:schema>
+  </types>
+  <message name="getClassName">
+    <part name="parameters" element="tns:getClassName" />
+  </message>
+  <message name="getClassNameResponse">
+    <part name="parameters" element="tns:getClassNameResponse" />
+  </message>
+  <message name="setClassName">
+    <part name="parameters" element="tns:setClassName" />
+  </message>
+  <message name="setClassNameResponse">
+    <part name="parameters" element="tns:setClassNameResponse" />
+  </message>
+  <message name="getStudent">
+    <part name="parameters" element="tns:getStudent" />
+  </message>
+  <message name="getStudentResponse">
+    <part name="parameters" element="tns:getStudentResponse" />
+  </message>
+  <message name="RemoveStudent">
+    <part name="parameters" element="tns:RemoveStudent" />
+  </message>
+  <message name="RemoveStudentResponse">
+    <part name="parameters" element="tns:RemoveStudentResponse" />
+  </message>
+  <message name="getClassRoom">
+    <part name="parameters" element="tns:getClassRoom" />
+  </message>
+  <message name="getClassRoomResponse">
+    <part name="parameters" element="tns:getClassRoomResponse" />
+  </message>
+  <message name="StartClass">
+    <part name="parameters" element="tns:StartClass" />
+  </message>
+  <message name="StartClassResponse">
+    <part name="parameters" element="tns:StartClassResponse" />
+  </message>
+  <message name="setClassRoom">
+    <part name="parameters" element="tns:setClassRoom" />
+  </message>
+  <message name="setClassRoomResponse">
+    <part name="parameters" element="tns:setClassRoomResponse" />
+  </message>
+  <message name="AddStudent">
+    <part name="parameters" element="tns:AddStudent" />
+  </message>
+  <message name="AddStudentResponse">
+    <part name="parameters" element="tns:AddStudentResponse" />
+  </message>
+  <message name="getStudents">
+    <part name="parameters" element="tns:getStudents" />
+  </message>
+  <message name="getStudentsResponse">
+    <part name="parameters" element="tns:getStudentsResponse" />
+  </message>
+  <message name="setMaxStudents">
+    <part name="parameters" element="tns:setMaxStudents" />
+  </message>
+  <message name="setMaxStudentsResponse">
+    <part name="parameters" element="tns:setMaxStudentsResponse" />
+  </message>
+  <message name="setStudent">
+    <part name="parameters" element="tns:setStudent" />
+  </message>
+  <message name="setStudentResponse">
+    <part name="parameters" element="tns:setStudentResponse" />
+  </message>
+  <message name="getStundentName">
+    <part name="parameters" element="tns:getStundentName" />
+  </message>
+  <message name="getStundentNameResponse">
+    <part name="parameters" element="tns:getStundentNameResponse" />
+  </message>
+  <message name="setStundentName">
+    <part name="parameters" element="tns:setStundentName" />
+  </message>
+  <message name="setStundentNameResponse">
+    <part name="parameters" element="tns:setStundentNameResponse" />
+  </message>
+  <message name="Fail">
+    <part name="parameters" element="tns:Fail" />
+  </message>
+  <message name="FailResponse">
+    <part name="parameters" element="tns:FailResponse" />
+  </message>
+  <message name="setStudents">
+    <part name="parameters" element="tns:setStudents" />
+  </message>
+  <message name="setStudentsResponse">
+    <part name="parameters" element="tns:setStudentsResponse" />
+  </message>
+  <message name="getMaxStudents">
+    <part name="parameters" element="tns:getMaxStudents" />
+  </message>
+  <message name="getMaxStudentsResponse">
+    <part name="parameters" element="tns:getMaxStudentsResponse" />
+  </message>
+  <message name="Pass">
+    <part name="parameters" element="tns:Pass" />
+  </message>
+  <message name="PassResponse">
+    <part name="parameters" element="tns:PassResponse" />
+  </message>
+  <portType name="CompositeServ">
+    <operation name="getClassName">
+      <input wsam:Action="http://tomcatservice/CompositeServ/getClassNameRequest" message="tns:getClassName" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/getClassNameResponse" message="tns:getClassNameResponse" />
+    </operation>
+    <operation name="setClassName">
+      <input wsam:Action="http://tomcatservice/CompositeServ/setClassNameRequest" message="tns:setClassName" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/setClassNameResponse" message="tns:setClassNameResponse" />
+    </operation>
+    <operation name="getStudent">
+      <input wsam:Action="http://tomcatservice/CompositeServ/getStudentRequest" message="tns:getStudent" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/getStudentResponse" message="tns:getStudentResponse" />
+    </operation>
+    <operation name="RemoveStudent">
+      <input wsam:Action="http://tomcatservice/CompositeServ/RemoveStudentRequest" message="tns:RemoveStudent" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/RemoveStudentResponse" message="tns:RemoveStudentResponse" />
+    </operation>
+    <operation name="getClassRoom">
+      <input wsam:Action="http://tomcatservice/CompositeServ/getClassRoomRequest" message="tns:getClassRoom" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/getClassRoomResponse" message="tns:getClassRoomResponse" />
+    </operation>
+    <operation name="StartClass">
+      <input wsam:Action="http://tomcatservice/CompositeServ/StartClassRequest" message="tns:StartClass" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/StartClassResponse" message="tns:StartClassResponse" />
+    </operation>
+    <operation name="setClassRoom">
+      <input wsam:Action="http://tomcatservice/CompositeServ/setClassRoomRequest" message="tns:setClassRoom" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/setClassRoomResponse" message="tns:setClassRoomResponse" />
+    </operation>
+    <operation name="AddStudent">
+      <input wsam:Action="http://tomcatservice/CompositeServ/AddStudentRequest" message="tns:AddStudent" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/AddStudentResponse" message="tns:AddStudentResponse" />
+    </operation>
+    <operation name="getStudents">
+      <input wsam:Action="http://tomcatservice/CompositeServ/getStudentsRequest" message="tns:getStudents" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/getStudentsResponse" message="tns:getStudentsResponse" />
+    </operation>
+    <operation name="setMaxStudents">
+      <input wsam:Action="http://tomcatservice/CompositeServ/setMaxStudentsRequest" message="tns:setMaxStudents" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/setMaxStudentsResponse" message="tns:setMaxStudentsResponse" />
+    </operation>
+    <operation name="setStudent">
+      <input wsam:Action="http://tomcatservice/CompositeServ/setStudentRequest" message="tns:setStudent" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/setStudentResponse" message="tns:setStudentResponse" />
+    </operation>
+    <operation name="getStundentName">
+      <input wsam:Action="http://tomcatservice/CompositeServ/getStundentNameRequest" message="tns:getStundentName" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/getStundentNameResponse" message="tns:getStundentNameResponse" />
+    </operation>
+    <operation name="setStundentName">
+      <input wsam:Action="http://tomcatservice/CompositeServ/setStundentNameRequest" message="tns:setStundentName" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/setStundentNameResponse" message="tns:setStundentNameResponse" />
+    </operation>
+    <operation name="Fail">
+      <input wsam:Action="http://tomcatservice/CompositeServ/FailRequest" message="tns:Fail" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/FailResponse" message="tns:FailResponse" />
+    </operation>
+    <operation name="setStudents">
+      <input wsam:Action="http://tomcatservice/CompositeServ/setStudentsRequest" message="tns:setStudents" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/setStudentsResponse" message="tns:setStudentsResponse" />
+    </operation>
+    <operation name="getMaxStudents">
+      <input wsam:Action="http://tomcatservice/CompositeServ/getMaxStudentsRequest" message="tns:getMaxStudents" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/getMaxStudentsResponse" message="tns:getMaxStudentsResponse" />
+    </operation>
+    <operation name="Pass">
+      <input wsam:Action="http://tomcatservice/CompositeServ/PassRequest" message="tns:Pass" />
+      <output wsam:Action="http://tomcatservice/CompositeServ/PassResponse" message="tns:PassResponse" />
+    </operation>
+  </portType>
+  <binding name="CompositeServPortBinding" type="tns:CompositeServ">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getClassName">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="setClassName">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getStudent">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemoveStudent">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getClassRoom">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="StartClass">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="setClassRoom">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddStudent">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getStudents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="setMaxStudents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="setStudent">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getStundentName">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="setStundentName">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Fail">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="setStudents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getMaxStudents">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Pass">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CompositeServService">
+    <port name="CompositeServPort" binding="tns:CompositeServPortBinding">
+      <soap:address location="http://localhost:8080/TomcatService/comp" />
+    </port>
+  </service>
+</definitions>

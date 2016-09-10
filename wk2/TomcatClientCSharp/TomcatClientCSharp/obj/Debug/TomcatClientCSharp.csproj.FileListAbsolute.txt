@@ -1,0 +1,14 @@
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\bin\Debug\TomcatClientCSharp.exe.config
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\bin\Debug\TomcatClientCSharp.exe
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\bin\Debug\TomcatClientCSharp.pdb
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\TomcatClientCSharp.csprojResolveAssemblyReference.cache
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\MainWindow.g.cs
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\App.g.cs
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\TomcatClientCSharp_MarkupCompile.cache
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\TomcatClientCSharp_MarkupCompile.lref
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\MainWindow.baml
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\TomcatClientCSharp.g.resources
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\TomcatClientCSharp.Properties.Resources.resources
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\TomcatClientCSharp.csproj.GenerateResource.Cache
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\TomcatClientCSharp.exe
+D:\Code\GitHub\4_fourth_year_block1\sot\wk2\TomcatClientCSharp\TomcatClientCSharp\obj\Debug\TomcatClientCSharp.pdb
