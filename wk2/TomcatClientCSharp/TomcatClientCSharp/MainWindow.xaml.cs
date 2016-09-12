@@ -70,5 +70,10 @@ namespace TomcatClientCSharp
         {
             lv.Items.Add(proxy.Fail());
         }
+
+        private void btnRemoveStudent_Click(object sender, RoutedEventArgs e)
+        {
+            proxy.RemoveStudent(proxy.getStudent());
+        }
     }
 }

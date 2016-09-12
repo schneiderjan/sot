@@ -39,6 +39,7 @@
                 <Button x:Name="btnGetAllStudent" Content="All Students" Click="btnGetAllStudent_Click"></Button>
                 <Button x:Name="btnStartClass" Content="Start class" Click="btnStartClass_Click"/>
                 <Button x:Name="btnAddStudent" Content="Go to class" Click="btnAddStudent_Click"/>
+                <Button x:Name="btnRemoveStudent" Content="Leave class" Click="btnRemoveStudent_Click"></Button>
             </StackPanel>
         </Grid>
     </Grid>
