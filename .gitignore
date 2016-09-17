@@ -48,3 +48,5 @@ Temporary Items
 build/
 /wk2/TomcatClientJar/nbproject/private/
 /wk2/TomcatClientJar/dist/
+/wk4/RestService/nbproject/private/
+/wk4/RestService/dist/
