@@ -8,6 +8,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import restservice.Car;
 import restservice.Rental;        
@@ -33,7 +34,7 @@ public class RentalResources {
     @POST
     @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
-    public void addRental(String name, int price){
+    public void addRental(@QueryParam("name")String name, @QueryParam("price")int price){
         rental.addRental(new Car(name,price));
     }
 
