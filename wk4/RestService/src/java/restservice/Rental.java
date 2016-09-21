@@ -13,7 +13,7 @@ import java.util.List;
  * @author jan
  */
 public class Rental {
-    List<Car> rentals;
+    ArrayList<Car> rentals;
 
     public Rental (){
         rentals = new ArrayList<>();
@@ -22,7 +22,7 @@ public class Rental {
         rentals.add(new Car("Volkswagen Polo", 100));
     }
 
-    public List<Car> getRentals(){
+    public ArrayList<Car> getRentals(){
         return rentals;
     }
 

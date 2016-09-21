@@ -1,15 +1,19 @@
 package rentalresources;
 
+import com.owlike.genson.Genson;
 import com.sun.jersey.spi.resource.Singleton;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import restservice.Car;
 import restservice.Rental;        
 /**
@@ -18,6 +22,8 @@ import restservice.Rental;
 @Path("/rental")
 @Singleton
 public class RentalResources {
+    Genson genson = new Genson();
+
     private final Rental rental;
 
     public RentalResources(){
@@ -27,15 +33,16 @@ public class RentalResources {
     @GET
     @Path("rentals")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Car> getRentals(){
+    public ArrayList<Car> getRentals(){
         return rental.getRentals();
     }
-    
+  
     @POST
     @Path("add")
     @Produces(MediaType.APPLICATION_JSON)
-    public void addRental(@QueryParam("name")String name, @QueryParam("price")int price){
+    public void addRental(@QueryParam("name") String name, @PathParam("price")int price){
         rental.addRental(new Car(name,price));
+//        return Response.ok().build();
     }
 
     @DELETE

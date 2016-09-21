@@ -22,14 +22,20 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import java.io.*;
-//import org.json.JSONException;
-//import org.json.JSONObject;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import okhttp3.HttpUrl;
+import okhttp3.MediaType;
+import org.json.*;
+import restservice.Car;
+import restservice.Rental;
 
 /**
  *
  * @author jan
  */
 public class RestClient extends Application {
+   String baseUrl = "http://localhost:8080/RestService/rest/rental/";
     BorderPane bp;
     VBox left, center, right;
     ListView<String> listView;
@@ -46,29 +52,67 @@ public class RestClient extends Application {
         listView = new ListView<>();
 
         btnAddRental = new Button("Add new rental.");
+        btnGetRentals = new Button("Show all rentals.");
         
-//        btnGetRentals.setOnAction( (ActionEvent e) ->{} );
+        btnGetRentals.setOnAction( (ActionEvent e) ->{
+            HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl).newBuilder();
+            urlBuilder.addPathSegment("rentals");
+            String url = urlBuilder.build().toString();
+            Request request = new Request.Builder()
+            .url(url)
+            .build();
+            try {
+            final Response response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
+                System.out.println("SUCCESS");
+                JSONArray json = new JSONArray(response.body().string());
+                System.out.println(json.toString());
+//                Gist gist = gson.fromJson(response.body().charStream(), Gist.class);
+
+            } else {
+                System.out.println("FAIL");
+
+            }
+            }
+            catch(IOException | JSONException easd){
+                System.out.println(easd.getMessage());
+            } 
+        
+        } );
         
         btnAddRental.setOnAction( (ActionEvent e) ->{
-        final RequestBody body  = new FormBody.Builder()
-                .add("name", "testname")
-                .add("price", "5")
-                .build();
+//        final RequestBody body  = new FormBody.Builder()
+//                .add("name", "test")
+//                .add("price", "5")
+//                .
+//                .build();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl).newBuilder();
+        
+        urlBuilder.addPathSegment("add");
+        urlBuilder.addQueryParameter("name","test");
+        urlBuilder.addQueryParameter("price","5");
+        String url = urlBuilder.build().toString();
         Request request = new Request.Builder()
-            .url("http://localhost:8080/RestService/rest/add")
-            .post(body)
+            .url(url)
+//            .post(body)
+//            .url(baseUrl+"add")
+//            .post(body)
             .build();
         
          try {
             final Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
                 System.out.println("SUCCESS");
-//                JSONObject json = new JSONObject(response.body().string());
-//                response.close();
+                System.out.println(response.body().string());
 
-//                Integer success = Integer.parseInt( json.getString("success"));
-//                String message = json.getString("message");
-            }}
+//                Gist gist = gson.fromJson(response.body().charStream(), Gist.class);
+
+            } else {
+                System.out.println("FAIL");
+
+            }
+            
+         }
               catch (Exception exception){
                 System.out.println("EXCEIOTOM");
              }
@@ -80,6 +124,9 @@ public class RestClient extends Application {
 
 
         left.getChildren().add(btnAddRental);
+        left.getChildren().add(btnGetRentals);
+        center.getChildren().add(listView);
+        bp.setCenter(center);
         bp.setLeft(left);
         Scene scene = new Scene(bp,500,200);
         primaryStage.setTitle("Great Car Rental!");
