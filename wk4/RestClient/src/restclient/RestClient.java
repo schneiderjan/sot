@@ -5,6 +5,7 @@
  */
 package restclient;
 
+import com.owlike.genson.Genson;
 import com.sun.deploy.util.SessionState;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -24,6 +25,7 @@ import okhttp3.Response;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.TextField;
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import org.json.*;
@@ -35,13 +37,16 @@ import restservice.Rental;
  * @author jan
  */
 public class RestClient extends Application {
-   String baseUrl = "http://localhost:8080/RestService/rest/rental/";
+
+    Genson genson = new Genson();
+    String baseUrl = "http://localhost:8080/RestService/rest/rental/";
     BorderPane bp;
     VBox left, center, right;
     ListView<String> listView;
-    Button btnGetRentals, btnAddRental, btnRemoveRental, btnGetPrice,btnUpdatePrice;
+    Button btnGetRentals, btnAddRental, btnRemoveRental, btnGetPrice, btnUpdatePrice;
+    TextField txtName, txtPrice, txtIndex;
     OkHttpClient client;
-    
+
     @Override
     public void start(Stage primaryStage) {
         client = new OkHttpClient();
@@ -50,85 +55,117 @@ public class RestClient extends Application {
         center = new VBox();
         right = new VBox();
         listView = new ListView<>();
+        txtName = new TextField("Enter name.");
+        txtPrice = new TextField("Enter price.");
+        txtIndex = new TextField("Index to remove");
 
         btnAddRental = new Button("Add new rental.");
         btnGetRentals = new Button("Show all rentals.");
-        
-        btnGetRentals.setOnAction( (ActionEvent e) ->{
+        btnRemoveRental = new Button("Remove rental");
+
+        btnGetRentals.setOnAction((ActionEvent e) -> {
             HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl).newBuilder();
             urlBuilder.addPathSegment("rentals");
             String url = urlBuilder.build().toString();
             Request request = new Request.Builder()
-            .url(url)
-            .build();
+                    .url(url)
+                    .build();
             try {
-            final Response response = client.newCall(request).execute();
-            if (response.isSuccessful()) {
-                System.out.println("SUCCESS");
-                JSONArray json = new JSONArray(response.body().string());
-                System.out.println(json.toString());
-//                Gist gist = gson.fromJson(response.body().charStream(), Gist.class);
+                final Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    System.out.println("SUCCESS");
+                    JSONArray jsonArray = new JSONArray(response.body().string());
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject c = null;
+                        c = jsonArray.getJSONObject(i);
+                        listView.getItems().add("Car: " + c.getString("name") + "; Price: " + c.getInt("price"));
+                    }
 
-            } else {
-                System.out.println("FAIL");
-
-            }
-            }
-            catch(IOException | JSONException easd){
+                } else {
+                    System.out.println("FAIL");
+                }
+            } catch (IOException | JSONException easd) {
                 System.out.println(easd.getMessage());
-            } 
-        
-        } );
-        
-        btnAddRental.setOnAction( (ActionEvent e) ->{
-//        final RequestBody body  = new FormBody.Builder()
-//                .add("name", "test")
-//                .add("price", "5")
-//                .
-//                .build();
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl).newBuilder();
-        
-        urlBuilder.addPathSegment("add");
-        urlBuilder.addQueryParameter("name","test");
-        urlBuilder.addQueryParameter("price","5");
-        String url = urlBuilder.build().toString();
-        Request request = new Request.Builder()
-            .url(url)
-//            .post(body)
-//            .url(baseUrl+"add")
-//            .post(body)
-            .build();
-        
-         try {
-            final Response response = client.newCall(request).execute();
-            if (response.isSuccessful()) {
-                System.out.println("SUCCESS");
-                System.out.println(response.body().string());
-
-//                Gist gist = gson.fromJson(response.body().charStream(), Gist.class);
-
-            } else {
-                System.out.println("FAIL");
-
             }
-            
-         }
-              catch (Exception exception){
-                System.out.println("EXCEIOTOM");
-             }
-        
-        } );
-//        btnRemoveRental.setOnAction( (ActionEvent e) ->{} );
+
+        });
+
+        btnAddRental.setOnAction((ActionEvent e) -> {
+            Car c = null;
+            try {
+                c = new Car(txtName.getText(), Integer.parseInt(txtPrice.getText()));
+            } catch (NumberFormatException ek) {
+                listView.getItems().add("Not correct format.");
+            }
+            if (c == null) {
+                return;
+            }
+
+            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+            RequestBody body = RequestBody.create(JSON, genson.serialize(c));
+            Request request = new Request.Builder()
+                    .url(baseUrl + "add")
+                    .post(body)
+                    .build();
+            try {
+                final Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    listView.getItems().add("Car added successfully.");
+                } else {
+                    System.out.println("FAIL");
+                    System.out.println(response.message());
+                }
+
+            } catch (IOException exc) {
+                System.out.println(exc.getMessage());
+            }
+        });
+        btnRemoveRental.setOnAction((ActionEvent e) -> {
+            int index = -1;
+            try {
+                index = Integer.parseInt(txtIndex.getText());
+            } catch (NumberFormatException nein) {
+                listView.getItems().add("Not correct format.");
+            }
+            if (index == -1) {
+                return;
+            }
+            String json = "{\"index\": \"" + String.valueOf(index) + "\"}";
+            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+            RequestBody body = RequestBody.create(JSON, json);
+            Request request = new Request.Builder()
+                    .url(baseUrl + "remove")
+                    .delete(body)
+                    .build();
+
+            try {
+                final Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    System.out.println("SUCCESS");
+                } else {
+                    System.out.println("FAIL");
+                    System.out.println(response.message());
+                }
+
+            } catch (IOException exc) {
+                System.out.println(exc.getMessage());
+            }
+
+        });
 //        btnGetPrice.setOnAction( (ActionEvent e) ->{} );
 //        btnUpdatePrice.setOnAction( (ActionEvent e) ->{} );
 
-
         left.getChildren().add(btnAddRental);
+        left.getChildren().add(txtName);
+        left.getChildren().add(txtPrice);
         left.getChildren().add(btnGetRentals);
+        right.getChildren().add(btnRemoveRental);
+        right.getChildren().add(txtIndex);
         center.getChildren().add(listView);
         bp.setCenter(center);
         bp.setLeft(left);
-        Scene scene = new Scene(bp,500,200);
+        bp.setRight(right);
+        Scene scene = new Scene(bp, 500, 200);
         primaryStage.setTitle("Great Car Rental!");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -139,8 +176,7 @@ public class RestClient extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        
-        
+
     }
-    
+
 }
