@@ -43,7 +43,7 @@ public class RestClient extends Application {
     VBox left, center, right;
     ListView<String> listView;
     Button btnGetRentals, btnAddRental, btnRemoveRental, btnGetPrice, btnUpdatePrice;
-    TextField txtName, txtPrice, txtNewPrice, txtIndex;
+    TextField txtName, txtPrice, txtNewPrice, txtIndex, txtIndex1;
     OkHttpClient client;
     MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -58,6 +58,7 @@ public class RestClient extends Application {
         txtName = new TextField("Enter name.");
         txtPrice = new TextField("Enter price.");
         txtIndex = new TextField("Index to remove");
+        txtIndex1 = new TextField("Enter index.");
         txtNewPrice = new TextField("Enter new price.");
 
         btnAddRental = new Button("Add new rental.");
@@ -137,14 +138,15 @@ public class RestClient extends Application {
             } catch (JSONException ex) {
                 Logger.getLogger(RestClient.class.getName()).log(Level.SEVERE, null, ex);
             }
+            if (j == null) {
+                System.out.println("Fatal typo.");
+                return;
+            }
 
-            RequestBody body = new FormBody.Builder()
-                    .add("index", String.valueOf(index))
-                    .build();
+            RequestBody body = RequestBody.create(JSON, j.toString());
             Request request = new Request.Builder()
                     .url(baseUrl + "remove")
                     .delete(body)
-                    //                    .method("DELETE", body)
                     .build();
 
             try {
@@ -162,13 +164,11 @@ public class RestClient extends Application {
 
         });
         btnUpdatePrice.setOnAction((ActionEvent e) -> {
-            int index = 2;
-            int price = 123;
             JSONObject j = null;
             try {
                 j = new JSONObject()
-                        .put("index", index)
-                        .put("newPrice", price);
+                        .put("index", Integer.getInteger(txtIndex1.getText()))
+                        .put("newPrice", Integer.getInteger(txtNewPrice.getText()));
             } catch (JSONException ex) {
                 Logger.getLogger(RestClient.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -200,6 +200,7 @@ public class RestClient extends Application {
         right.getChildren().add(txtIndex);
         right.getChildren().add(btnUpdatePrice);
         right.getChildren().add(txtNewPrice);
+        right.getChildren().add(txtIndex1);
         center.getChildren().add(listView);
         bp.setCenter(center);
         bp.setLeft(left);
