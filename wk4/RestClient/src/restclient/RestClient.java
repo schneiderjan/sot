@@ -82,14 +82,12 @@ public class RestClient extends Application {
                         c = jsonArray.getJSONObject(i);
                         listView.getItems().add("Car: " + c.getString("name") + "; Price: " + c.getInt("price"));
                     }
-
                 } else {
                     System.out.println("FAIL");
                 }
             } catch (IOException | JSONException easd) {
                 System.out.println(easd.getMessage());
             }
-
         });
 
         btnAddRental.setOnAction((ActionEvent e) -> {
@@ -116,24 +114,22 @@ public class RestClient extends Application {
                     System.out.println("FAIL");
                     System.out.println(response.message());
                 }
-
             } catch (IOException exc) {
                 System.out.println(exc.getMessage());
             }
         });
 
         btnRemoveRental.setOnAction((ActionEvent e) -> {
-//            int index = -1;
-//            try {
-//                index = Integer.parseInt(txtIndex.getText());
-//            } catch (NumberFormatException nein) {
-//                listView.getItems().add("Not correct format.");
-//            }
-//            if (index == -1) {
-//                return;
-//            }
+            int index = -1;
+            try {
+                index = Integer.parseInt(txtIndex.getText());
+            } catch (NumberFormatException nein) {
+                listView.getItems().add("Not correct format.");
+            }
+            if (index == -1) {
+                return;
+            }
 
-            int index = 0;
             JSONObject j = null;
             try {
                 j = new JSONObject()
@@ -156,12 +152,10 @@ public class RestClient extends Application {
                 if (response.isSuccessful()) {
                     System.out.println("SUCCESS");
                     System.out.println(response.body().string());
-
                 } else {
                     System.out.println("FAIL");
                     System.out.println(response.body().string());
                 }
-
             } catch (IOException exc) {
                 System.out.println(exc.getMessage());
             }
@@ -193,7 +187,6 @@ public class RestClient extends Application {
                     System.out.println("FAIL");
                     System.out.println(response.body().string());
                 }
-
             } catch (IOException exc) {
                 System.out.println(exc.getMessage());
             }

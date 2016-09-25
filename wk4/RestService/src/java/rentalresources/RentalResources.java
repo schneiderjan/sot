@@ -55,7 +55,7 @@ public class RentalResources {
 
     @DELETE
     @Path("remove")
-    @Consumes( MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void removeRental(@QueryParam("JSON") int js) throws JSONException {
         JSONObject json = new JSONObject(js);
         int index = json.getInt("index");
@@ -64,13 +64,12 @@ public class RentalResources {
 
     @PUT
     @Path("price")
-//    @Consumes(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void updatePrice(@QueryParam("JSON") String pi) throws JSONException {        
+    public void updatePrice(@QueryParam("JSON") String pi) throws JSONException {
         JSONObject json = new JSONObject(pi);
         System.out.println(json.toString());
         int index = json.getInt("index");
         int newPrice = json.getInt("newPrice");
-            rental.updatePrice(index, newPrice);
+        rental.updatePrice(index, newPrice);
     }
 }
