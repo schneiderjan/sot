@@ -6,16 +6,10 @@
 package restclient;
 
 import com.owlike.genson.Genson;
-import com.sun.deploy.util.SessionState;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -23,11 +17,16 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import java.io.*;
+import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+
 import okhttp3.HttpUrl;
 import okhttp3.MediaType;
+
 import org.json.*;
 import restservice.Car;
 import restservice.Rental;
@@ -44,8 +43,9 @@ public class RestClient extends Application {
     VBox left, center, right;
     ListView<String> listView;
     Button btnGetRentals, btnAddRental, btnRemoveRental, btnGetPrice, btnUpdatePrice;
-    TextField txtName, txtPrice, txtIndex;
+    TextField txtName, txtPrice, txtNewPrice, txtIndex;
     OkHttpClient client;
+    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     @Override
     public void start(Stage primaryStage) {
@@ -58,10 +58,12 @@ public class RestClient extends Application {
         txtName = new TextField("Enter name.");
         txtPrice = new TextField("Enter price.");
         txtIndex = new TextField("Index to remove");
+        txtNewPrice = new TextField("Enter new price.");
 
         btnAddRental = new Button("Add new rental.");
         btnGetRentals = new Button("Show all rentals.");
-        btnRemoveRental = new Button("Remove rental");
+        btnRemoveRental = new Button("Remove rental.");
+        btnUpdatePrice = new Button("Change price.");
 
         btnGetRentals.setOnAction((ActionEvent e) -> {
             HttpUrl.Builder urlBuilder = HttpUrl.parse(baseUrl).newBuilder();
@@ -101,7 +103,6 @@ public class RestClient extends Application {
                 return;
             }
 
-            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
             RequestBody body = RequestBody.create(JSON, genson.serialize(c));
             Request request = new Request.Builder()
                     .url(baseUrl + "add")
@@ -120,31 +121,45 @@ public class RestClient extends Application {
                 System.out.println(exc.getMessage());
             }
         });
+
         btnRemoveRental.setOnAction((ActionEvent e) -> {
-            int index = -1;
+//            int index = -1;
+//            try {
+//                index = Integer.parseInt(txtIndex.getText());
+//            } catch (NumberFormatException nein) {
+//                listView.getItems().add("Not correct format.");
+//            }
+//            if (index == -1) {
+//                return;
+//            }
+
+            int index = 0;
+            JSONObject j = null;
             try {
-                index = Integer.parseInt(txtIndex.getText());
-            } catch (NumberFormatException nein) {
-                listView.getItems().add("Not correct format.");
+                j = new JSONObject()
+                        .put("index", index);
+            } catch (JSONException ex) {
+                Logger.getLogger(RestClient.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (index == -1) {
-                return;
-            }
-            String json = "{\"index\": \"" + String.valueOf(index) + "\"}";
-            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-            RequestBody body = RequestBody.create(JSON, json);
+
+            RequestBody body = new FormBody.Builder()
+                    .add("index", String.valueOf(index))
+                    .build();
             Request request = new Request.Builder()
                     .url(baseUrl + "remove")
                     .delete(body)
+                    //                    .method("DELETE", body)
                     .build();
 
             try {
                 final Response response = client.newCall(request).execute();
                 if (response.isSuccessful()) {
                     System.out.println("SUCCESS");
+                    System.out.println(response.body().string());
+
                 } else {
                     System.out.println("FAIL");
-                    System.out.println(response.message());
+                    System.out.println(response.body().string());
                 }
 
             } catch (IOException exc) {
@@ -152,8 +167,37 @@ public class RestClient extends Application {
             }
 
         });
-//        btnGetPrice.setOnAction( (ActionEvent e) ->{} );
-//        btnUpdatePrice.setOnAction( (ActionEvent e) ->{} );
+        btnUpdatePrice.setOnAction((ActionEvent e) -> {
+            int index = 2;
+            int price = 123;
+            JSONObject j = null;
+            try {
+                j = new JSONObject()
+                        .put("index", index)
+                        .put("newPrice", price);
+            } catch (JSONException ex) {
+                Logger.getLogger(RestClient.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println(j.toString());
+            RequestBody body = RequestBody.create(JSON, j.toString());
+            Request request = new Request.Builder()
+                    .url(baseUrl + "price")
+                    .put(body)
+                    .build();
+            try {
+                final Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    System.out.println("SUCCESS");
+                    System.out.println(response.body().string());
+                } else {
+                    System.out.println("FAIL");
+                    System.out.println(response.body().string());
+                }
+
+            } catch (IOException exc) {
+                System.out.println(exc.getMessage());
+            }
+        });
 
         left.getChildren().add(btnAddRental);
         left.getChildren().add(txtName);
@@ -161,6 +205,8 @@ public class RestClient extends Application {
         left.getChildren().add(btnGetRentals);
         right.getChildren().add(btnRemoveRental);
         right.getChildren().add(txtIndex);
+        right.getChildren().add(btnUpdatePrice);
+        right.getChildren().add(txtNewPrice);
         center.getChildren().add(listView);
         bp.setCenter(center);
         bp.setLeft(left);
